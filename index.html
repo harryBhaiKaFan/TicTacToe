@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>TicTacToe</title>
+		<meta name="viewport" content="initial-scale=1,width=device-width"/>
+		<meta charset="UTF-8"/>
+
+		<link rel="stylesheet" href="css/App.css"/>
+		<script type="module" src="js/App.js">
+		</script>
+
+	</head>
+
+	<body>
+		<div data-message class="message">
+		</div>
+
+		<div data-app class="App">
+			<header>
+				<h3>
+					Online Players: 
+					<span data-player-num class="plyr-num">
+						0
+					</span>
+				</h3>
+
+				<h3>
+					Your ID:
+					<span data-player-id class="plyr-id">
+						?
+					</span>
+				</h3>
+			</header>
+
+			<section data-online-players class="online-players">
+				<input id="searchBar" data-player-search class="player-search" type="search" placeholder="Search by ID"/>
+			</section>
+		</div>
+
+		<div data-game class="Game hidden">
+			<header>
+				<h3 data-back-btn class="back-btn">
+					&larr;
+				</h3>
+
+				<h3 data-reload-btn class="reload-btn">
+					Reload
+				</h3>
+
+				<h3 data-turn class="plyr-turn">
+
+				</h3>
+			</header>
+			
+			<div data-ttt class="ttt">
+				<div data-cell class="cell"></div>
+				<div data-cell class="cell"></div>
+				<div data-cell class="cell"></div>
+				<div data-cell class="cell"></div>
+				<div data-cell class="cell"></div>
+				<div data-cell class="cell"></div>
+				<div data-cell class="cell"></div>
+				<div data-cell class="cell"></div>
+				<div data-cell class="cell"></div>
+			</div>
+		</div>
+	</body>
+</html>

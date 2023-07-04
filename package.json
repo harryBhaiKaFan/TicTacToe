@@ -1,0 +1,17 @@
+{
+  "name": "tictactoe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "node server/App.mjs &",
+	"client": "serve . &"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "serve": "^14.2.0",
+    "ws": "^8.13.0"
+  }
+}

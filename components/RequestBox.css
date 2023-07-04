@@ -1,0 +1,49 @@
+
+.request-box
+{
+	position:fixed;
+	z-index:999;
+	bottom: min(10vh,100px);
+	width:min(500px,80vw);
+	height:min(130px,20vh);
+	right: max(-600px,-88vw);
+	padding:min(10px,5vh) min(20px,5vw);
+	background:var(#fff);
+	box-shadow:0 0 10px #7f7f7f;
+	border-radius: min(20px,5vw);
+	transition:all 0.4s;
+
+}
+
+.show-req-box
+{
+	right:10vw;
+}
+
+.request-box > .request-text
+{
+	overflow:scroll;
+	height: 60%;
+	display:block;
+}
+
+.request-box > .btn
+{
+	display:inline-block;
+	padding: min(5px,3%) min(8px,4%);
+	margin: min(10px,5%) min(10px,5%);
+	font-family: arial;
+	border-radius: min(8px,2vw);
+	color:#3f3f3f;
+	cursor: pointer;
+}
+
+.request-box > .y_btn
+{
+	background: #7fee7f;
+}
+
+.request-box > .n_btn
+{
+	background: #ee7f7f;
+}
