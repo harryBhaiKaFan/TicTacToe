@@ -1,22 +1,30 @@
 import { Game } from "./Game.js";
 
 const msgElem = document.querySelector("[data-message]");
+const headerElem = document.querySelector("[data-header]");
 const sock = new WebSocket("ws://localhost:8080");
+const body = document.body;
 
-// TODO:
-// 0. Restructure Server Code.
-// 1. Becomes buggy after 2-3 matches
-// 2. Dark mode
-// 3. Player Account
-// 4. Friends
-// 5. Chats
-// 6. Firebase integration	
 
 const App = {
 	init: function(){
 		sock.addEventListener("open", this.connected.bind(this));
 		sock.addEventListener("error", this.failure.bind(this));
-		
+
+		if (localStorage.getItem("--tttTheme"))
+		{
+			body.className = localStorage.getItem("--tttTheme");
+		}
+
+
+		headerElem.onclick = () => {
+			if (body.className === "dark"){
+				body.className = "light";
+			}else{
+				body.className = "dark";
+			}
+			localStorage.setItem("--tttTheme",body.className);
+		}
 	},
 	connected: ()=>{
 		msgElem.innerText = "Connected to the server!";

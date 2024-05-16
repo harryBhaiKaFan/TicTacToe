@@ -6,11 +6,44 @@
 	box-sizing: border-box;
 }
 
+:root
+{
+	--gray0: #000;
+	--gray1: #222;
+	--gray3: #555;
+	--gray4: #888;
+	--gray5: #ddd;
+	--gray6: #eee;
+	--gray7: #fff;
+}
+
+.light
+{
+	--bg: var(--gray7);
+	--fg: var(--gray0);
+	--secColor: #ddd;
+	--red: #cc2222;
+	--green: #22bb22;
+	--lightGreen: #55cc55;
+	--brown: #664433;
+}
+
+.dark
+{
+	--bg: var(--gray1);
+	--fg: var(--gray6);
+	--secColor: #404040;
+	--red: #9a0606;
+	--green: #028102;
+	--lightGreen: #265d26;
+	--brown: #3f2b21;
+}
 
 html,body
 {
 	height:100%;
-	background: #fff;
+	background: var(--bg);
+	color: var(--fg);
 }
 
 
@@ -26,32 +59,32 @@ html,body
 	padding:0.4rem;
 	transition:0.5s all;
 	height:min(25px,5vh);
-	overflow:scroll;
 }
 
 
 .err-txt
 {
-	background: #cc2222;
-	color: #fff;
+	background: var(--red);
+	color: var(--fg);
 }
 
 .succ-txt
 {
-	background: #22bb22;
-	color: #fff;
+	background: var(--green);
+	color: var(--fg);
 }
 
 .wait-txt
 {
-	background:#664433;
-	color:#9f9f9f;
+	background: var(--brown);
+	color: var(--fg);
 }
 
 .hid-txt
 {
 	height:0;
 	padding:0;
+	display: none;
 }
 
 
@@ -64,7 +97,7 @@ header
 {
 	display: flex;
 	width:100%;
-	background: #f0f0f0;
+	background: var(--secColor);
 	align-items:center;
 	padding: min(20px,2vh);
 	justify-content:space-around;
@@ -73,7 +106,7 @@ header
 header > h3
 {
 	font-family: monospace;
-	color: #787870;
+	color: var(--fg);
 }
 
 .online-players
@@ -88,11 +121,12 @@ header > h3
 {
 	position:sticky;
 	top:min(10px,7vmin);
-	border: 2px solid #000;
+	border: 2px solid var(--gray3);
+	color: var(--fg);
 	padding:min(8px,6vmin);
 	width:80%;
 	border-radius:30px;
-	background: #f0f0f0;
+	background: var(--bg);
 	margin-bottom: min(12px,8vmin);
 }
 
@@ -102,7 +136,7 @@ header > h3
 	cursor:pointer;
 	margin-top: min(5px,2vmin);
 	padding: min(8px,6vmin);
-	background: #f3f3f3;
+	background: var(--secColor);
 	width: 90%;
 	display: flex;
 	align-items: center;
@@ -113,7 +147,7 @@ header > h3
 
 .player:hover
 {
-	background:#ddd;
+	background:var(--gray4);
 }
 
 /*** Game ***/
@@ -137,8 +171,8 @@ header > h3
 
 .cell
 {
-	outline: 1px solid green;
-	color:green;
+	outline: 1px solid var(--lightGreen);
+	color: var(--lightGreen);
 	display:flex;
 	align-items: center;
 	justify-content: center;

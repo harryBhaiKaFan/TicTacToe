@@ -25,7 +25,6 @@ export const Game = {
 			[2,4,6]
 		],
 		add:function(webSocket){
-			let players = this;
 			let plyr = new Player({ws:webSocket,id:Game.ID},this.remove.bind(this),this.playMatch.bind(this));
 			this.all.push(plyr);
 			this.online.push(plyr.id);
@@ -134,7 +133,7 @@ export const Game = {
 			};
 
 		},
-		plyr_ev(game_board,data,plyr)
+		plyr_ev(game_board,data)
 		{
 			if(data === "Reload")
 			{
@@ -193,7 +192,7 @@ export const Game = {
 		plyr_game_handle: function(idx,e){
 			let game_board = this.game_boards[idx];
 
-			if(!this.plyr_ev(game_board,e.data,game_board.turn))
+			if(!this.plyr_ev(game_board,e.data))
 			{
 				let i = parseInt(e.data);
 				if (game_board.board[i] === "X" || game_board.board[i] === "O"){
@@ -202,6 +201,8 @@ export const Game = {
 				}
 				game_board.board[i] = game_board.curr_char;
 				game_board.filled++;
+			} else if (e.data === "Quit") {
+				return;
 			}
 
 			game_board.plyr.ws.send("Board");
@@ -224,11 +225,11 @@ export const Game = {
 			if(wins || game_board.filled === 9)
 			{
 				game_board.turn.ws.onmessage=(e)=>{
-					this.plyr_ev(game_board,e.data,game_board.turn);
+					this.plyr_ev(game_board,e.data);
 				}
 
 				game_board.nextTurn.ws.onmessage = (e) =>{
-					this.plyr_ev(game_board,e.data,game_board.nextTurn);
+					this.plyr_ev(game_board,e.data);
 				}
 
 				return;
@@ -254,7 +255,7 @@ export const Game = {
 			}
 
 			game_board.nextTurn.ws.onmessage = (e) =>{
-				this.plyr_ev(game_board,e.data,game_board.nextTurn);
+				this.plyr_ev(game_board,e.data);
 			}
 		},
 		wins: function(board){
